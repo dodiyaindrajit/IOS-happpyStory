@@ -69,10 +69,11 @@ final class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 2 // 1) user info 2) user post
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // user bio
         if section == 0 {
             return 0
         }
@@ -81,10 +82,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let model = userPosts[indexPath.row]
+        //        let model = userPosts[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollecationViewCell.identifier, for: indexPath) as! PhotoCollecationViewCell
 
-//        cell.configure(with: model)
+        //        cell.configure(with: model)
         cell.configure(debug: "test")
         return cell
     }
@@ -93,10 +94,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.deselectItem(at: indexPath, animated: true)
 
         // get the model and open post controller
-//        let model = userPosts[indexPath.row]
+        // let model = userPosts[indexPath.row]
         let user = User(userName: "karmaln.flutter", name: (frist: "Amit", last: "Prajapati"), birthDate: Date(), gender: Gender.male, count: UserCount(followers: 12, following: 34, posts: 65), profilePhoto: URL(string: "https://www.google.com")!, joinDate: Date())
 
-        let post = UserPost(identifier: "", postType: .photo, thumbnilImage: URL(string: "https://www.google.com/")!, postURL: URL(string: "https://www.google.com/")!, caption: nil, likeCount: [], comments: [], createdDate: Date(), taggedUsers: [],owner: user)
+        let post = UserPost(identifier: "", postType: .photo, thumbnilImage: URL(string: "https://www.google.com/")!, postURL: URL(string: "https://www.google.com/")!, caption: nil, likeCount: [], comments: [], createdDate: Date(), taggedUsers: [], owner: user)
 
         let vc = PostViewController(model: post)
         vc.title = "Post"
@@ -128,33 +129,41 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height / 3)
+            return CGSize(width: collectionView.width, height: collectionView.height / 2.1)
         }
 
         // sizee of section tabs
-        return CGSize(width: collectionView.frame.size.width, height: 50)
+        return CGSize(width: collectionView.width, height: 50)
     }
 }
 
-//MARK: - ProfileHeader Delegate
+// MARK: - ProfileHeader Delegate
 
 extension ProfileViewController: ProfileinfoHeaderCollectionReusableViewDelegate {
+    // caling highLights on click....!
+    func profileHeaderDidTapHighLightProfileButton() {
+        let vc = HIghLightViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.hidesBottomBarWhenPushed = true
+        present(vc, animated: true)
+    }
+
     func profileHeaderDidTapPostButton(_ header: ProfileinfoHeaderCollectionReusableView) {
         // scroll to the posts
         collectionView?.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
     }
 
     func profileHeaderDidTapFollowerButton(_ header: ProfileinfoHeaderCollectionReusableView) {
-        let vc = ListViewController(data: ["Amit","Vandana","Jayesh","Ranchhod","Rahul","Roy"])
+        let vc = ListViewController(data: ["Amit", "Vandana", "Jayesh", "Ranchhod", "Rahul", "Roy"])
         vc.title = "Followers"
-//        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
 
     func profileHeaderDidTapFollowingButton(_ header: ProfileinfoHeaderCollectionReusableView) {
-        let vc = ListViewController(data: ["Amit","Vandana","Jayesh","Ranchhod","Rahul","Roy"])
+        let vc = ListViewController(data: ["Amit", "Vandana", "Jayesh", "Ranchhod", "Rahul", "Roy"])
         vc.title = "Following"
-//        vc.navigationItem.largeTitleDisplayMode =
+        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -164,10 +173,9 @@ extension ProfileViewController: ProfileinfoHeaderCollectionReusableViewDelegate
     }
 }
 
+// MARK: - ProfileTabs Delegate
 
-//MARK: - ProfileTabs Delegate
-
-extension ProfileViewController:ProfileTabsCollectionReusableViewDelegate{
+extension ProfileViewController: ProfileTabsCollectionReusableViewDelegate {
     func didTapGridButton() {
         // Reload Collection view with data
     }
@@ -179,6 +187,4 @@ extension ProfileViewController:ProfileTabsCollectionReusableViewDelegate{
     func didTapReelButton() {
         // Reload Collection view with data
     }
-
-
 }

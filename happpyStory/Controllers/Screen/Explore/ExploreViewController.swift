@@ -72,7 +72,7 @@ class ExploreViewController: UIViewController {
         layout.itemSize = CGSize(width: view.width / 3, height: 52)
         layout.scrollDirection = .horizontal
         tabbedSearchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        tabbedSearchCollectionView?.register(PhotoCollecationViewCell.self, forCellWithReuseIdentifier: PhotoCollecationViewCell.identifier)
+//        tabbedSearchCollectionView?.register(PhotoCollecationViewCell.self, forCellWithReuseIdentifier: PhotoCollecationViewCell.identifier)
         tabbedSearchCollectionView?.backgroundColor = .yellow
         tabbedSearchCollectionView?.isHidden = true
         guard let tabbedSearchCollectionView = tabbedSearchCollectionView else {

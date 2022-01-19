@@ -51,8 +51,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserFollowTableViewCell.identifier, for: indexPath) as! UserFollowTableViewCell
 
-        cell.configure(with: "")
-//        cell.textLabel?.text = data[indexPath.row]
+        cell.configure(with: data[indexPath.row])
         return cell
     }
 

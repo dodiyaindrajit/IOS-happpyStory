@@ -59,7 +59,9 @@ class UserFollowTableViewCell: UITableViewCell {
         contentView.addSubview(followButton)
     }
 
-    public func configure(with model: String) {}
+    public func configure(with model: String) {
+        nameLabel.text = model
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -79,7 +81,7 @@ class UserFollowTableViewCell: UITableViewCell {
 
         let buttonWidth = contentView.width > 500 ? 220.0 : contentView.width / 3
 
-        followButton.frame = CGRect(x: contentView.width - 5 - buttonWidth, y: (contentView.height / 2) - 15 , width: buttonWidth, height: contentView.height - 30)
+        followButton.frame = CGRect(x: contentView.width - 5 - buttonWidth, y: (contentView.height / 2) - 15, width: buttonWidth, height: contentView.height - 30)
         followButton.raduis(reduisSize: followButton.height / 2)
 
         let labelHeight = contentView.height / 2

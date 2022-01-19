@@ -44,4 +44,9 @@ extension UIButton {
         layer.masksToBounds = true
         layer.cornerRadius = reduisSize
     }
+
+    func border(borderSize: CGFloat) {
+        layer.borderWidth = borderSize
+        layer.borderColor = UIColor.label.cgColor
+    }
 }
