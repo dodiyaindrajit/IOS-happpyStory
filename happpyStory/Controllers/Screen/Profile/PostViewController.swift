@@ -85,7 +85,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch renderModels[section].renderType {
         case .actions: return 1
-        case let .comments(comments): return comments.count > 4 ? 4 : comments.count
+        case .comments: return 1
         case .header: return 1
         case .primaryContent: return 1
         }
@@ -125,7 +125,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         case .header: return 70
         case .primaryContent: return tableView.width
         case .actions: return 60
-        case .comments: return 50
+        case .comments: return 80
         }
     }
 }

@@ -185,8 +185,8 @@ class LoginViewController: UIViewController {
             CommanStruc.isLogin = true
             dismiss(animated: true, completion: nil) // close current screen
         } else {
-            let alert = UIAlertController(title: "Sorry... User Not Found !", message: "\nEmail: amit@gmail.com \nPassword: 123123\n", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Let's Try", style: .cancel, handler: nil))
+            let alert = UIAlertController(title: "Sorry... User Not Found !", message: "\nEnter Admin Email \nPassword: Enter Admin Password\n", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok..! Let's Try", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }

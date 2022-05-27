@@ -40,6 +40,7 @@
 		1D918C74278D8AF4005C655C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D918C67278D8AF4005C655C /* ExploreViewController.swift */; };
 		1DA986DE278F0E8F00F25130 /* HighlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA986DD278F0E8F00F25130 /* HighlightTableViewCell.swift */; };
 		1DB8E919278FF79900902328 /* HIghLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB8E918278FF79900902328 /* HIghLightViewController.swift */; };
+		1DC7880627983AFB00DE3CE9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC7880527983AFB00DE3CE9 /* UserDefaults.swift */; };
 		6158B0BA44B4D3A5BE3BA522 /* Pods_happpyStory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47270026C90A8AC6CBCDD121 /* Pods_happpyStory.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		1D918C67278D8AF4005C655C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		1DA986DD278F0E8F00F25130 /* HighlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightTableViewCell.swift; sourceTree = "<group>"; };
 		1DB8E918278FF79900902328 /* HIghLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIghLightViewController.swift; sourceTree = "<group>"; };
+		1DC7880527983AFB00DE3CE9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		47270026C90A8AC6CBCDD121 /* Pods_happpyStory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happpyStory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8214AAB2A4431CCF127A0364 /* Pods-happpyStory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happpyStory.debug.xcconfig"; path = "Target Support Files/Pods-happpyStory/Pods-happpyStory.debug.xcconfig"; sourceTree = "<group>"; };
 		CDC08312DE35AEC6B8C67527 /* Pods-happpyStory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happpyStory.release.xcconfig"; path = "Target Support Files/Pods-happpyStory/Pods-happpyStory.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				1D918C52278D8AF4005C655C /* Extension.swift */,
 				1D918C53278D8AF4005C655C /* CommanStruct.swift */,
+				1DC7880527983AFB00DE3CE9 /* UserDefaults.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -230,9 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				1D918C60278D8AF4005C655C /* Home */,
-				1D918C62278D8AF4005C655C /* Notification */,
-				1D918C64278D8AF4005C655C /* Camara */,
 				1D918C66278D8AF4005C655C /* Explore */,
+				1D918C64278D8AF4005C655C /* Camara */,
+				1D918C62278D8AF4005C655C /* Notification */,
 				1D918C58278D8AF4005C655C /* Profile */,
 			);
 			path = Screen;
@@ -451,6 +454,7 @@
 				1D918C74278D8AF4005C655C /* ExploreViewController.swift in Sources */,
 				1D918C4A278D8AE9005C655C /* Models.swift in Sources */,
 				1D918C71278D8AF4005C655C /* HomeViewController.swift in Sources */,
+				1DC7880627983AFB00DE3CE9 /* UserDefaults.swift in Sources */,
 				1D918C69278D8AF4005C655C /* CommanStruct.swift in Sources */,
 				1D918C68278D8AF4005C655C /* Extension.swift in Sources */,
 				1D918C46278D8AE9005C655C /* UserFollowTableViewCell.swift in Sources */,

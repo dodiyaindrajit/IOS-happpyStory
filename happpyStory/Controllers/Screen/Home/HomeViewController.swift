@@ -15,8 +15,8 @@ struct HomeFeedRenderViewModel {
 }
 
 class HomeViewController: UIViewController {
+    // MARK: - variable declaration
 
-    //MARK: - variable declaration
     private var feedrenderModels = [HomeFeedRenderViewModel]()
 
     private let tableView: UITableView = {
@@ -33,7 +33,8 @@ class HomeViewController: UIViewController {
         return tableView
     }()
 
-    //MARK: - Override Method (Life Cycle)
+    // MARK: - Override Method (Life Cycle)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Home"
@@ -41,6 +42,7 @@ class HomeViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = .clear
     }
 
     override func viewDidLayoutSubviews() {
@@ -50,12 +52,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
 //        check Authentication
 //        handleAuthentication()
     }
 
-    //MARK: - Other Methods (Authentication , MockModels)
+    // MARK: - Other Methods (Authentication , MockModels)
+
     private func handleAuthentication() {
         if !CommanStruc.isLogin {
             let loginvc = LoginViewController()
@@ -90,8 +92,8 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate , TableViewDataSource
 
-//MARK: - UITableViewDelegate , TableViewDataSource
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return feedrenderModels.count * 4
@@ -119,12 +121,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         } else if subSection == 3 {
             // Commetns
-            let commnetsModel = model.commnets
-
-            switch commnetsModel.renderType {
-            case let .comments(comments): return comments.count > 2 ? 2 : comments.count
-            case .header, .actions, .primaryContent: return 0
-            }
+//            let commnetsModel = model.commnets
+//
+//            switch commnetsModel.renderType {
+//            case let .comments(comments): return comments.count > 2 ? 2 : comments.count
+//            case .header, .actions, .primaryContent: return 0
+//            }
+            return 1
         }
         return 0
     }
@@ -157,6 +160,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch postModel.renderType {
             case let .primaryContent(post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath) as! IGFeedPostTableViewCell
+                cell.delegate = self
                 return cell
             case .comments, .actions, .header: return UITableViewCell()
             }
@@ -167,7 +171,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch actionModel.renderType {
             case let .actions(provider):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionTableViewCell.identifier, for: indexPath) as! IGFeedPostActionTableViewCell
-
                 cell.delegate = self
                 return cell
             case .comments, .header, .primaryContent: return UITableViewCell()
@@ -199,7 +202,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         } else if subSection == 2 {
             return 60
         } else if subSection == 3 {
-            return 50
+            return 80
         }
         return 0
     }
@@ -214,8 +217,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - IGFeedPostHeaderTableViewCellDelegate
 
-//MARK: - IGFeedPostHeaderTableViewCellDelegate
 extension HomeViewController: IGFeedPostHeaderTableViewCellDelegate {
     func didTapmoreButton() {
         print("print from delegate Header Options Tap")
@@ -234,11 +237,12 @@ extension HomeViewController: IGFeedPostHeaderTableViewCellDelegate {
     }
 }
 
+// MARK: - IGFeedPostActionTableViewCellDelegate
 
-//MARK: - IGFeedPostActionTableViewCellDelegate
-extension HomeViewController: IGFeedPostActionTableViewCellDelegate{
+extension HomeViewController: IGFeedPostActionTableViewCellDelegate , IGFeedPostTableViewCellDelegate{
     func didTapLikeButton() {
         print("Like Click...!")
+    
     }
 
     func didTapCommentButton() {
@@ -249,9 +253,57 @@ extension HomeViewController: IGFeedPostActionTableViewCellDelegate{
         print("Share Click...!")
     }
 
-    func didTapSaveButton() {
-        print("Save Click...!")
+
+    func didTapdoubleTap() {
+
     }
 
+    func didTapSaveButton() {
+        print("Save Click...!")
 
+        //set
+        Configuration.value(value: "my_value", forKey: "key_1")
+
+        //get
+        let myValue = Configuration.value(defaultValue: "default_value", forKey: "key_1")
+
+        print(myValue)
+
+        //custome actions sheet
+        let actionSheet = UIAlertController(title: "\n\n", message: nil, preferredStyle: .actionSheet)
+
+        let view = UIView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 50.0))
+
+        let saveImageButton: UIButton = {
+            let button = UIButton()
+            button.clipsToBounds = true
+            button.tintColor = .systemBlue
+            button.setBackgroundImage(UIImage(named: "karmaln"), for: .normal)
+            return button
+        }()
+
+        let saveLabelButton: UIButton = {
+            let button = UIButton()
+            button.clipsToBounds = true
+            button.setTitleColor(UIColor.label, for: .normal)
+            button.setTitle("Save to Faviroute", for: .normal)
+            button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+            return button
+        }()
+
+        view.addSubview(saveImageButton)
+        view.addSubview(saveLabelButton)
+        saveImageButton.frame = CGRect(x: 5, y: 5, width: 40, height: 40)
+        saveLabelButton.frame = CGRect(x: saveImageButton.right + 10, y: 5, width: actionSheet.view.bounds.size.width - 50, height: 40)
+
+        //add view to actionsheet
+        actionSheet.view.addSubview(view)
+        present(actionSheet, animated: true, completion: nil)
+
+        //dismiss after 1.5 secounds
+        let when = DispatchTime.now() + 1.5
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            actionSheet.dismiss(animated: true, completion: nil)
+        }
+    }
 }

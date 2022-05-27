@@ -71,14 +71,32 @@
                     <view key="view" contentMode="scaleToFill" id="5Gu-wI-QAD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBj-bZ-zTb">
+                                <rect key="frame" x="103.5" y="381" width="207" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efc-se-fig">
+                                <rect key="frame" x="221" y="469" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ajN-nd-Gi3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yBj-bZ-zTb" firstAttribute="centerX" secondItem="5Gu-wI-QAD" secondAttribute="centerX" id="4du-Fj-78a"/>
+                            <constraint firstItem="yBj-bZ-zTb" firstAttribute="top" secondItem="ajN-nd-Gi3" secondAttribute="top" constant="293" id="Ml6-bD-tBK"/>
+                            <constraint firstItem="yBj-bZ-zTb" firstAttribute="width" secondItem="5Gu-wI-QAD" secondAttribute="width" multiplier="200:400" id="gLP-LN-LQM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ImA-eR-2iU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrQ-gC-MLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1184" y="1463"/>
+            <point key="canvasLocation" x="-1184.0579710144928" y="1462.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="moD-HK-eDf">
