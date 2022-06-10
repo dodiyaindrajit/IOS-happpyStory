@@ -1,6 +1,5 @@
 # IOS-happpyStory
-Happy Stroy Application is made in IOS-Swift with ❤️ in Karmleen Tachnology.
-
+Happy Stroy Application is made in IOS-Swift with ❤️
 Images : 
 LoginScreen  |  SearchScreen | SettingScreen
 :-------------------------:|:-------------------------:|:-------------------------:
